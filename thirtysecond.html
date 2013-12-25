@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>30 second countdown</title>
+<style>
+    body {
+        font-size: 2000%;
+        font-family: helvetica, sans-serif;
+        font-weight:bold;
+        padding-right:40%;
+        padding-top:10%;
+        text-align:right;
+    }
+</style>
+<script>
+window.onload = function() {
+    var timer,
+        decrementCounter = function() {
+            var current = parseInt(document.body.innerHTML);
+            if (current > 0) {
+                document.body.innerHTML = current - 1;
+            }
+            clearTimeout(timer);
+            timer = setTimeout(decrementCounter,1000);
+        },
+        resetCounter = function() {
+            document.body.innerHTML = "30";
+            console.log(timer);
+            clearTimeout(timer);
+            timer = setTimeout(decrementCounter,1000);
+        };
+    document.body.addEventListener("click",resetCounter);
+    document.body.addEventListener("keypress",resetCounter);
+    resetCounter();
+    timer = setTimeout(decrementCounter,1000);
+};
+</script>
+</head>
+<body>
+</body>
+</html>
